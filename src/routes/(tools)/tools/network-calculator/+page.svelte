@@ -53,44 +53,37 @@
     
     <h2>IpV4 адрес</h2>
     <!-- Ввод IP-адреса -->
-    <div class="flex space-x-2">
+    <div class="flex flex-row gap-2 items-center">
         
         <input
             type="number"
             bind:value={ipAddress[0]}
             min="0"
             max="255"
-            class="input w-1/5"
+            class="input "
         />.
         <input
             type="number"
             bind:value={ipAddress[1]}
             min="0"
             max="255"
-            class="input w-1/5"
+            class="input "
         />.
         <input
             type="number"
             bind:value={ipAddress[2]}
             min="0"
             max="255"
-            class="input w-1/5"
+            class="input "
         />.
         <input
             type="number"
             bind:value={ipAddress[3]}
             min="0"
             max="255"
-            class="input w-1/5"
+            class="input "
         />
-        /
-        <input
-            type="number"
-            bind:value={subnetMask}
-            min="0"
-            max="255"
-            class="input w-1/5"
-        />
+        <span class="">/ {subnetMask}</span>
     </div>
 
     <!-- Выбор маски подсети -->
