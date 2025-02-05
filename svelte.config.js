@@ -9,7 +9,10 @@ const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
 	preprocess: [
-		mdsvex({ extensions: ['.svx', '.md'] }), 
+		mdsvex({ 
+			extensions: ['.svx', '.md'],
+			layout: './src/lib/layout/markdownLayout.svelte' 
+		}), 
 		vitePreprocess()
 	],
 
