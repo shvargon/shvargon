@@ -8,7 +8,7 @@
 </svelte:head>
 
 <MainLayout>
-		<div class="conainer mx-auto prose prose-h1:text-2xl prose-h2:text-xl">
+		<div class="conainer mx-auto prose prose-h1:text-2xl prose-h2:text-xl mt-6">
 			{@render children()}
 		</div>
 </MainLayout>
