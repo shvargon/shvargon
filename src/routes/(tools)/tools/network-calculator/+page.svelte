@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
     let ipAddress = $state([192, 168, 0, 1]); // Изначальный IP-адрес
     let subnetMask = $state(24); // Изначальная маска подсети
     let networkAddress = $state("");
     let broadcastAddress = $state("");
     let availableHosts = $state(0);
 
-    const getSubnetMask = (cidr) => {
+    const getSubnetMask = (cidr: number) => {
         let mask = "";
         for (let i = 0; i < 4; i++) {
             let octet = 0;
@@ -50,38 +50,36 @@
 
 <h1 class="font-semibold text-center">Калькулятор сети</h1>
 <div class="max-w-4xl mx-auto p-6 space-y-4 bg-white rounded-lg shadow-lg">
-    
     <h2>IpV4 адрес</h2>
     <!-- Ввод IP-адреса -->
     <div class="flex flex-row gap-2 items-center">
-        
         <input
             type="number"
             bind:value={ipAddress[0]}
             min="0"
             max="255"
-            class="input "
+            class="input"
         />.
         <input
             type="number"
             bind:value={ipAddress[1]}
             min="0"
             max="255"
-            class="input "
+            class="input"
         />.
         <input
             type="number"
             bind:value={ipAddress[2]}
             min="0"
             max="255"
-            class="input "
+            class="input"
         />.
         <input
             type="number"
             bind:value={ipAddress[3]}
             min="0"
             max="255"
-            class="input "
+            class="input"
         />
         <span class="">/ {subnetMask}</span>
     </div>
