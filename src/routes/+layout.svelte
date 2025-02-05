@@ -5,7 +5,7 @@
 	let { children } = $props();
 </script>
 
-<div class="flex flex-col h-screen justify-between">
+<div class="flex flex-col min-h-screen justify-between">
 	<Header />
 
 	<div class="mb-auto">
