@@ -126,7 +126,7 @@
 
     <!-- Кнопка для перерасчёта -->
     <div class="text-center">
-        <button on:click={calculateNetwork} class="btn btn-primary"
+        <button onclick={calculateNetwork} class="btn btn-primary"
             >Пересчитать</button
         >
     </div>
