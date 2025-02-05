@@ -8,7 +8,7 @@
 <div class="flex flex-col min-h-screen justify-between">
 	<Header />
 
-	<div class="mb-auto">
+	<div class="grow">
 		{@render children()}
 	</div>
 
