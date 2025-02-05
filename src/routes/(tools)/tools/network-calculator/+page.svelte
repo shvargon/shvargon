@@ -1,14 +1,13 @@
 <script>
-    import { onMount } from "svelte";
-    let ipAddress = "192.168.0.1"; // Изначальный IP-адрес
-    let subnetMask = 24; // Изначальная маска подсети
+    let ipAddress = $state([192,168,0,1]); // Изначальный IP-адрес
+    let subnetMask = $state(24); // Изначальная маска подсети
     let networkAddress = "";
     let broadcastAddress = "";
     let availableHosts = 0;
 
     // Функция для вычисления диапазона адресов и других данных
     const calculateNetwork = () => {
-        const ipParts = ipAddress.split(".").map(Number);
+        const ipParts = ipAddress;
         const mask = 32 - subnetMask;
         const network = ipParts.slice();
         // Пример простого вычисления сети (считаем только для примера)
@@ -19,7 +18,7 @@
     };
 
     // Вычисление сразу после загрузки страницы
-    onMount(() => {
+    $effect(() => {
         calculateNetwork();
     });
 </script>
@@ -31,28 +30,28 @@
     <div class="flex space-x-2">
         <input
             type="number"
-            bind:value={ipAddress.split(".")[0]}
+            bind:value={ipAddress[0]}
             min="0"
             max="255"
             class="input input-bordered w-1/4"
         />
         <input
             type="number"
-            bind:value={ipAddress.split(".")[1]}
+            bind:value={ipAddress[1]}
             min="0"
             max="255"
             class="input input-bordered w-1/4"
         />
         <input
             type="number"
-            bind:value={ipAddress.split(".")[2]}
+            bind:value={ipAddress[2]}
             min="0"
             max="255"
             class="input input-bordered w-1/4"
         />
         <input
             type="number"
-            bind:value={ipAddress.split(".")[3]}
+            bind:value={ipAddress[3]}
             min="0"
             max="255"
             class="input input-bordered w-1/4"
