@@ -1,8 +1,9 @@
 <script lang="ts">
-	import "../app.css";
+	import "$lib/layout/app.css";
 	import Header from "$lib/layout/Header.svelte";
 	import Footer from "$lib/layout/Footer.svelte";
-	let { children } = $props();
+    
+    let { children } = $props();
 </script>
 
 <div class="flex flex-col min-h-screen justify-between">
