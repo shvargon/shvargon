@@ -4,7 +4,9 @@
 </script>
 
 <MainLayout>
-	<div class="prose prose-h1:text-2xl prose-h2:text-xl">
-		{@render children()}
+	<div class="container mx-auto flex justify-center items-center">
+		<div class="prose prose-h1:text-2xl prose-h2:text-xl mt-6 w-full">
+			{@render children()}
+		</div>
 	</div>
 </MainLayout>

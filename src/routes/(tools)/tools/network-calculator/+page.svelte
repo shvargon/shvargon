@@ -1,9 +1,34 @@
 <script>
-    let ipAddress = $state([192,168,0,1]); // Изначальный IP-адрес
+    let ipAddress = $state([192, 168, 0, 1]); // Изначальный IP-адрес
     let subnetMask = $state(24); // Изначальная маска подсети
     let networkAddress = "";
     let broadcastAddress = "";
     let availableHosts = 0;
+
+    const getSubnetMask = (cidr) => {
+        let mask = "";
+        for (let i = 0; i < 4; i++) {
+            let octet = 0;
+            if (cidr > 8) {
+                octet = 255;
+                cidr -= 8;
+            } else if (cidr > 0) {
+                octet = 256 - Math.pow(2, 8 - cidr);
+                cidr = 0;
+            }
+            mask += i < 3 ? `${octet}.` : `${octet}`;
+        }
+        return mask;
+    };
+
+    // Генерируем массив масок CIDR
+    const subnetMasks = Array.from({ length: 25 }, (_, index) => {
+        const cidrValue = index + 8;
+        return {
+            value: cidrValue,
+            label: `${getSubnetMask(cidrValue)} (/${cidrValue})`,
+        };
+    });
 
     // Функция для вычисления диапазона адресов и других данных
     const calculateNetwork = () => {
@@ -33,48 +58,47 @@
             bind:value={ipAddress[0]}
             min="0"
             max="255"
-            class="input input-bordered w-1/4"
+            class="input w-1/4"
         />
         <input
             type="number"
             bind:value={ipAddress[1]}
             min="0"
             max="255"
-            class="input input-bordered w-1/4"
+            class="input w-1/4"
         />
         <input
             type="number"
             bind:value={ipAddress[2]}
             min="0"
             max="255"
-            class="input input-bordered w-1/4"
+            class="input w-1/4"
         />
         <input
             type="number"
             bind:value={ipAddress[3]}
             min="0"
             max="255"
-            class="input input-bordered w-1/4"
+            class="input w-1/4"
         />
     </div>
 
     <!-- Выбор маски подсети -->
     <div>
         <label class="block">Маска подсети</label>
-        <div class="flex items-center space-x-4">
+        <div class="flex flex-col">
             <select bind:value={subnetMask} class="select select-bordered">
-                <option value="8">255.0.0.0 (/8)</option>
-                <option value="16">255.255.0.0 (/16)</option>
-                <option value="24">255.255.255.0 (/24)</option>
-                <option value="30">255.255.255.252 (/30)</option>
+                {#each subnetMasks as mask}
+                    <option value={mask.value}>{mask.label}</option>
+                {/each}
             </select>
 
-            <div class="flex-1">
+            <div class="flex-1 w-full">
                 <input
                     type="range"
                     bind:value={subnetMask}
                     min="8"
-                    max="30"
+                    max="32"
                     step="1"
                     class="range range-primary"
                 />
