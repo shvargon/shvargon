@@ -10,8 +10,7 @@
         </button>
     </div>
     <div class="flex-1">
-        <!-- svelte-ignore a11y_missing_attribute -->
-        <a class="btn btn-ghost text-xl">Etheria</a>
+        <a class="btn btn-ghost text-xl" href="/">Etheria</a>
     </div>
     <div class="flex-none">
         <!-- rightside -->
