@@ -58,28 +58,28 @@
             bind:value={ipAddress[0]}
             min="0"
             max="255"
-            class="input"
+            class="input max-w-16"
         />.
         <input
             type="number"
             bind:value={ipAddress[1]}
             min="0"
             max="255"
-            class="input"
+            class="input max-w-16"
         />.
         <input
             type="number"
             bind:value={ipAddress[2]}
             min="0"
             max="255"
-            class="input"
+            class="input max-w-16"
         />.
         <input
             type="number"
             bind:value={ipAddress[3]}
             min="0"
             max="255"
-            class="input"
+            class="input max-w-16"
         />
         <span class="">/ {subnetMask}</span>
     </div>
